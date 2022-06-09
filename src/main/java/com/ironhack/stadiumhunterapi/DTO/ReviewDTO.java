@@ -11,5 +11,4 @@ public class ReviewDTO {
     private String comment;
     private int rating;
     private Long stadiumId;
-    private Long userId;
 }

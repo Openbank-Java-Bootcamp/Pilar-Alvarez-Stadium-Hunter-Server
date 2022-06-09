@@ -4,6 +4,7 @@ import com.ironhack.stadiumhunterapi.model.Stadium;
 
 public interface IStadiumService {
     Stadium findById(Long id);
+    void saveStadium(Stadium stadium);
 
 
 

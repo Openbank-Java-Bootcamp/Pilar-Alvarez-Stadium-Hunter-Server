@@ -1,8 +1,7 @@
 package com.ironhack.stadiumhunterapi.controller;
 
-import com.ironhack.stadiumhunterapi.repository.ReviewRepository;
+
 import com.ironhack.stadiumhunterapi.repository.UserRepository;
-import com.ironhack.stadiumhunterapi.service.impl.ReviewService;
 import com.ironhack.stadiumhunterapi.service.impl.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -22,11 +21,17 @@ public class UserController {
 
 
     //PATCH--add stadium to huntedStadiums
-    @PatchMapping("/users/{userId}/{stadiumID}")
+    @PatchMapping("/users/{stadiumID}")
     @ResponseStatus(HttpStatus.NO_CONTENT)
-    public void addStadiumToUser(@PathVariable Long userId, @PathVariable Long stadiumId){
-        userService.addStadiumToUser(userId, stadiumId);
+    public void addStadiumToUser(@PathVariable("stadiumID") Long stadiumId){
+        userService.addStadiumToUser(stadiumId);
     }
 
-    //DELETE
+    //DELETE--delete stadium from huntedStadiums
+    @DeleteMapping("/users/{stadiumID}")
+    @ResponseStatus(HttpStatus.NO_CONTENT)
+    public void removeStadium(@PathVariable("stadiumID") Long stadiumId){
+        userService.removeStadium(stadiumId);
+    }
+
 }

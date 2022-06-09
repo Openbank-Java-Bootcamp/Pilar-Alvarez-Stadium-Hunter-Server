@@ -3,13 +3,15 @@ package com.ironhack.stadiumhunterapi.service.impl;
 import com.ironhack.stadiumhunterapi.model.Stadium;
 import com.ironhack.stadiumhunterapi.model.User;
 import com.ironhack.stadiumhunterapi.repository.RoleRepository;
-import com.ironhack.stadiumhunterapi.repository.StadiumRepository;
 import com.ironhack.stadiumhunterapi.repository.UserRepository;
 import com.ironhack.stadiumhunterapi.service.interfaces.IUserService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
+import org.springframework.security.authentication.AnonymousAuthenticationToken;
+import org.springframework.security.core.Authentication;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
@@ -53,11 +55,28 @@ public class UserService implements IUserService, UserDetailsService {
         return userRepository.findById(id).orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND, "User not found"));
     }
 
-    public void addStadiumToUser(Long userId, Long stadiumId){
-        User userFromDB = userRepository.findById(userId).orElseThrow(()->new ResponseStatusException(HttpStatus.NOT_FOUND, "User not found"));
+    public void addStadiumToUser( Long stadiumId){
+        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+        String email = null;
+        if (!(authentication instanceof AnonymousAuthenticationToken)) {
+            email = authentication.getName();
+        }
+        User currentUser = userRepository.findByEmail(email);
         Stadium stadiumFromDb = stadiumService.findById(stadiumId);
-        userFromDB.getHuntedStadiums().add(stadiumFromDb);
-        userRepository.save(userFromDB);
+        currentUser.getHuntedStadiums().add(stadiumFromDb);
+        userRepository.save(currentUser);
+    }
+
+    public void removeStadium(Long stadiumId){
+        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+        String email = null;
+        if (!(authentication instanceof AnonymousAuthenticationToken)) {
+            email = authentication.getName();
+        }
+        User currentUser = userRepository.findByEmail(email);
+        Stadium stadiumFromDb = stadiumService.findById(stadiumId);
+        currentUser.getHuntedStadiums().remove(stadiumFromDb);
+        userRepository.save(currentUser);
     }
 
     @Override

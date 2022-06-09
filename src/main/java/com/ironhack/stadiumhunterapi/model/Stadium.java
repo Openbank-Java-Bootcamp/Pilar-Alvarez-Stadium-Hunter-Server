@@ -22,6 +22,6 @@ public class Stadium {
     private String city;
     private String country;
     private int capacity;
-    private double latitude;
-    private double longitude;
+    private String latitude;
+    private String longitude;
 }

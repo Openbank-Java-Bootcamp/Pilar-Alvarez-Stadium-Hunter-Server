@@ -17,4 +17,12 @@ public class StadiumService implements IStadiumService {
     public Stadium findById(Long id){
         return stadiumRepository.findById(id).orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND, "Stadium not found"));
     }
+
+    public void saveStadium(Stadium stadium){
+        //check if stadium already exists by name and city
+        Stadium alreadyExisting = stadiumRepository.findByNameAndCity(stadium.getName(), stadium.getCity()).orElse(null);
+        if(alreadyExisting == null){
+            stadiumRepository.save(stadium);
+        }
+    }
 }
