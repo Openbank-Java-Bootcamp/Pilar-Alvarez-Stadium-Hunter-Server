@@ -10,6 +10,8 @@ import java.util.Optional;
 
 @Repository
 public interface StadiumRepository extends JpaRepository<Stadium, Long> {
-    @Query(value = "SELECT * FROM stadium WHERE name = :stadiumName AND city = :stadiumCity", nativeQuery = true)
-    Optional<Stadium> findByNameAndCity(@Param("stadiumName") String stadiumName, @Param("stadiumCity") String stadiumCity );
+    /*@Query(value = "SELECT * FROM stadium WHERE name = :stadiumName AND city = :stadiumCity", nativeQuery = true)
+    Optional<Stadium> findByNameAndCity(@Param("stadiumName") String stadiumName, @Param("stadiumCity") String stadiumCity );*/
+
+    boolean existsStadiumByNameAndCity(String name, String city);
 }

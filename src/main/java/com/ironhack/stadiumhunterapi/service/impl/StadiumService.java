@@ -20,8 +20,12 @@ public class StadiumService implements IStadiumService {
 
     public void saveStadium(Stadium stadium){
         //check if stadium already exists by name and city
-        Stadium alreadyExisting = stadiumRepository.findByNameAndCity(stadium.getName(), stadium.getCity()).orElse(null);
+        /*Stadium alreadyExisting = stadiumRepository.findByNameAndCity(stadium.getName(), stadium.getCity()).orElse(null);
         if(alreadyExisting == null){
+            stadiumRepository.save(stadium);
+        }*/
+        boolean exists = stadiumRepository.existsStadiumByNameAndCity(stadium.getName(), stadium.getCity());
+        if(exists == false){
             stadiumRepository.save(stadium);
         }
     }

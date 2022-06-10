@@ -17,9 +17,7 @@ public class UserController {
 
     @Autowired
     private UserRepository userRepository;
-
-
-
+    
     //PATCH--add stadium to huntedStadiums
     @PatchMapping("/users/{stadiumID}")
     @ResponseStatus(HttpStatus.NO_CONTENT)
