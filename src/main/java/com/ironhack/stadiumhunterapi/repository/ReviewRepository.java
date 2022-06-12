@@ -11,6 +11,9 @@ import java.util.List;
 @Repository
 public interface ReviewRepository extends JpaRepository<Review, Long> {
 
-    @Query(value = "SELECT name, comment FROM review JOIN user ON review.user_id = user.id WHERE stadium_id = :stadiumId", nativeQuery = true)
-    Object findReviewsByStadiumId(@Param("stadiumId") Long stadiumId);
+    @Query(value = "SELECT comment FROM review  WHERE stadium_id = :stadiumId", nativeQuery = true)
+    List<String> findReviewsByStadiumId(@Param("stadiumId") Long stadiumId);
+
+    @Query(value = "SELECT user_id FROM review GROUP BY user_id ORDER BY COUNT(*) DESC limit 5", nativeQuery = true)
+    List<Long> findTopReviewersUsers();
 }

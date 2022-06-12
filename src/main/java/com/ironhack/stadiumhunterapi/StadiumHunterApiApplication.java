@@ -75,7 +75,9 @@ public class StadiumHunterApiApplication {
 					double latitude = jsonNode.get("Latitude").asDouble();
 					double longitude = jsonNode.get("Longitude").asDouble();
 					Stadium stadium = new Stadium(id,name,city, country, capacity, latitude, longitude);
-					stadiumService.saveStadium(stadium);
+					if(capacity>=5000){
+						stadiumService.saveStadium(stadium);
+					}
 					id+=1;
 				}
 			}

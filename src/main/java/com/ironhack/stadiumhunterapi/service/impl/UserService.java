@@ -55,8 +55,8 @@ public class UserService implements IUserService, UserDetailsService {
         return userRepository.findById(id).orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND, "User not found"));
     }
 
-    public void addStadiumToUser( Long stadiumId){
-        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+    public void addStadiumToUser( Long stadiumId, Authentication authentication){
+        //Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
         String email = null;
         if (!(authentication instanceof AnonymousAuthenticationToken)) {
             email = authentication.getName();
@@ -77,6 +77,32 @@ public class UserService implements IUserService, UserDetailsService {
         Stadium stadiumFromDb = stadiumService.findById(stadiumId);
         currentUser.getHuntedStadiums().remove(stadiumFromDb);
         userRepository.save(currentUser);
+    }
+
+    public List<Stadium> getUserStadiums(){
+        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+        String email = null;
+        if (!(authentication instanceof AnonymousAuthenticationToken)) {
+            email = authentication.getName();
+        }
+        User currentUser = userRepository.findByEmail(email);
+        return currentUser.getHuntedStadiums();
+        /*Long userId = currentUser.getId();
+        List <Long> stadiumsIdList = userRepository.findStadiumsIdByUser(userId);
+        List<Stadium> stadiumsHunted = new ArrayList<>();
+        for(Long id : stadiumsIdList){
+            stadiumsHunted.add(stadiumService.findById(id));
+        }
+        return stadiumsHunted;*/
+    }
+
+    public List<User> getTopUsers(){
+        List<Long> users = userRepository.findTopUsers();
+        List<User> topUsers = new ArrayList<>();
+        for(Long id : users){
+            topUsers.add(userRepository.findById(id).orElse(null));
+        }
+        return topUsers;
     }
 
     @Override

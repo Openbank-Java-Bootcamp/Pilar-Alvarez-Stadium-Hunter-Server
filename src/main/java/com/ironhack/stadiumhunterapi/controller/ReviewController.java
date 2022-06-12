@@ -13,6 +13,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
+import java.util.List;
 
 @RestController
 @RequestMapping("/api")
@@ -26,7 +27,7 @@ public class ReviewController {
 
     @GetMapping("/reviews/{id}")
     @ResponseStatus(HttpStatus.OK)
-    public Object getReviewByStadiumId(@PathVariable(name = "id") Long stadiumId) {
+    public List<String> getReviewByStadiumId(@PathVariable(name = "id") Long stadiumId) {
         return reviewService.findByStadiumId(stadiumId);
     }
 
@@ -34,6 +35,12 @@ public class ReviewController {
     @ResponseStatus(HttpStatus.CREATED)
     public void saveReview(@RequestBody @Valid ReviewDTO reviewDTO) {
             reviewService.saveReview(reviewDTO);
+    }
+
+    @GetMapping("/review/count")
+    @ResponseStatus(HttpStatus.OK)
+    public List<User> getTopReviewersUsers(){
+        return reviewService.getTopReviewersUsers();
     }
 
 }

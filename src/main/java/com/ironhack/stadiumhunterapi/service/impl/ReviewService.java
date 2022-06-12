@@ -12,6 +12,9 @@ import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
+import java.util.List;
+
 
 @Service
 public class ReviewService implements IReviewService {
@@ -27,7 +30,7 @@ public class ReviewService implements IReviewService {
     private UserRepository userRepository;
 
 
-    public Object findByStadiumId(Long stadiumId){
+    public List<String> findByStadiumId(Long stadiumId){
         return reviewRepository.findReviewsByStadiumId(stadiumId);
     }
 
@@ -45,5 +48,14 @@ public class ReviewService implements IReviewService {
         newReview.setStadium(stadiumService.findById(reviewDTO.getStadiumId()));
         newReview.setUser(currentUser);
         reviewRepository.save(newReview);
+    }
+
+    public List<User> getTopReviewersUsers(){
+        List<Long> users = reviewRepository.findTopReviewersUsers();
+        List<User> topUsers = new ArrayList<>();
+        for(Long id : users){
+            topUsers.add(userRepository.findById(id).orElse(null));
+        }
+        return topUsers;
     }
 }
