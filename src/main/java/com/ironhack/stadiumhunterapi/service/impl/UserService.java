@@ -63,7 +63,9 @@ public class UserService implements IUserService, UserDetailsService {
         }
         User currentUser = userRepository.findByEmail(email);
         Stadium stadiumFromDb = stadiumService.findById(stadiumId);
-        currentUser.getHuntedStadiums().add(stadiumFromDb);
+        if(!currentUser.getHuntedStadiums().contains(stadiumFromDb)){
+            currentUser.getHuntedStadiums().add(stadiumFromDb);
+        }
         userRepository.save(currentUser);
     }
 
@@ -87,13 +89,6 @@ public class UserService implements IUserService, UserDetailsService {
         }
         User currentUser = userRepository.findByEmail(email);
         return currentUser.getHuntedStadiums();
-        /*Long userId = currentUser.getId();
-        List <Long> stadiumsIdList = userRepository.findStadiumsIdByUser(userId);
-        List<Stadium> stadiumsHunted = new ArrayList<>();
-        for(Long id : stadiumsIdList){
-            stadiumsHunted.add(stadiumService.findById(id));
-        }
-        return stadiumsHunted;*/
     }
 
     public List<User> getTopUsers(){
