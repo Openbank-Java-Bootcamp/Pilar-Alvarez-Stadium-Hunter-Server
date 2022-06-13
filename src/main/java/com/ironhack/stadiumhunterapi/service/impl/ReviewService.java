@@ -30,7 +30,7 @@ public class ReviewService implements IReviewService {
     private UserRepository userRepository;
 
 
-    public List<String> findByStadiumId(Long stadiumId){
+    public List<Review> findByStadiumId(Long stadiumId){
         return reviewRepository.findReviewsByStadiumId(stadiumId);
     }
 

@@ -27,7 +27,7 @@ public class ReviewController {
 
     @GetMapping("/reviews/{id}")
     @ResponseStatus(HttpStatus.OK)
-    public List<String> getReviewByStadiumId(@PathVariable(name = "id") Long stadiumId) {
+    public List<Review> getReviewByStadiumId(@PathVariable(name = "id") Long stadiumId) {
         return reviewService.findByStadiumId(stadiumId);
     }
 
