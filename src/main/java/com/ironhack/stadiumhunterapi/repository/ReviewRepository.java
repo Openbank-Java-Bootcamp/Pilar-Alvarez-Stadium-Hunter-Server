@@ -16,4 +16,8 @@ public interface ReviewRepository extends JpaRepository<Review, Long> {
 
     @Query(value = "SELECT user_id FROM review GROUP BY user_id ORDER BY COUNT(*) DESC limit 5", nativeQuery = true)
     List<Long> findTopReviewersUsers();
+
+    @Query(value = "SELECT AVG(RATING) FROM review WHERE stadium_id = :stadiumId", nativeQuery = true)
+    Double findAvgRating(@Param("stadiumId") Long stadiumId);
+
 }
