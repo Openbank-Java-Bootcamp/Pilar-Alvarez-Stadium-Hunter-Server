@@ -47,7 +47,7 @@ public class ReviewController {
     @GetMapping("/review/avg/{id}")
     @ResponseStatus(HttpStatus.OK)
     public Double avgStadiumRating(@PathVariable(name = "id") Long stadiumId) {
-        return reviewRepository.findAvgRating(stadiumId);
+        return reviewService.avgStadiumRating(stadiumId);
     }
 
 }

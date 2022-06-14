@@ -11,6 +11,7 @@ import org.springframework.security.authentication.AnonymousAuthenticationToken;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Service;
+import org.springframework.web.bind.annotation.PathVariable;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -57,5 +58,14 @@ public class ReviewService implements IReviewService {
             topUsers.add(userRepository.findById(id).orElse(null));
         }
         return topUsers;
+    }
+
+    public Double avgStadiumRating(Long stadiumId) {
+        Double rating = Double.valueOf(0);
+        Double ratingFromDB = reviewRepository.findAvgRating(stadiumId);
+        if (ratingFromDB != null){
+            rating = ratingFromDB;
+        }
+        return rating;
     }
 }
