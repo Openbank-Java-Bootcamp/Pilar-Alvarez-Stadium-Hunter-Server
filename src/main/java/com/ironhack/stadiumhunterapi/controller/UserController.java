@@ -6,6 +6,7 @@ import com.ironhack.stadiumhunterapi.model.User;
 import com.ironhack.stadiumhunterapi.repository.UserRepository;
 import com.ironhack.stadiumhunterapi.service.impl.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.repository.query.Param;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.security.core.Authentication;
@@ -47,6 +48,12 @@ public class UserController {
     @ResponseStatus(HttpStatus.OK)
     public List<User> getTopUsersCount(){
         return userService.getTopUsers();
+    }
+
+    @GetMapping("users/countries")
+    @ResponseStatus(HttpStatus.OK)
+    public List<String> countriesByUserId(){
+        return userService.countriesByUserId();
     }
 
 }

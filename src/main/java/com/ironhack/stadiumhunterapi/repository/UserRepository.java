@@ -21,4 +21,7 @@ public interface UserRepository extends JpaRepository<User, Long> {
 
     @Query(value = "SELECT user_id FROM user_hunted_stadiums GROUP BY user_id ORDER BY COUNT(hunted_stadiums_id) DESC limit 5", nativeQuery = true)
     List<Long> findTopUsers();
+
+    @Query(value = "SELECT country FROM stadium INNER JOIN user_hunted_stadiums ON stadium.id = hunted_stadiums_id WHERE user_id = :userId GROUP BY country",nativeQuery = true)
+    List<String> countriesByUserId(@Param("userId") Long userId);
 }

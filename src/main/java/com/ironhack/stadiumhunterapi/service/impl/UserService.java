@@ -81,6 +81,17 @@ public class UserService implements IUserService, UserDetailsService {
         userRepository.save(currentUser);
     }
 
+    public List<String> countriesByUserId(){
+        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+        String email = null;
+        if (!(authentication instanceof AnonymousAuthenticationToken)) {
+            email = authentication.getName();
+        }
+        User currentUser = userRepository.findByEmail(email);
+        Long userId = currentUser.getId();
+        return userRepository.countriesByUserId(userId);
+    }
+
     public List<Stadium> getUserStadiums(){
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
         String email = null;

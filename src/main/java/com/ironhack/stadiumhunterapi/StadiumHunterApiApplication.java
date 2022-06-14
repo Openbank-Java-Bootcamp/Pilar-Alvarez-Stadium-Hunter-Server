@@ -51,14 +51,11 @@ public class StadiumHunterApiApplication {
 		return args -> {
 			userService.saveUser(new User("Pilar","pilar@gmail.com", "P@ssw0rd"));
 
+			//using ObjectMapper to read a json file with stadiums data and create Stadium objects from it.
 			ObjectMapper mapper = new ObjectMapper();
-			//InputStream inputStream = new FileInputStream(new File("../../resources/json/stadiums.json"));
-			//TypeReference<List<Stadium>> typeReference = new TypeReference<List<Stadium>>(){};
-			//List<Stadium> stadiums = mapper.readValue(inputStream, typeReference);
 			URL resource = Main.class.getClassLoader().getResource("stadiums.json");
 			byte[] bytes = Files.readAllBytes(Paths.get(resource.toURI()));
 			String json = new String(bytes);
-
 			JsonNode node = mapper.readTree(json);
 			if(node.isArray()){
 				Long id = 1L;
@@ -66,6 +63,7 @@ public class StadiumHunterApiApplication {
 					String name = jsonNode.get("Name").asText();
 					String city = jsonNode.get("Town").asText();
 					String country = jsonNode.get("Nation").asText();
+					//Capacity is define as a string variable in the json file (format: "10.000") so i have to remove the dot before parsing it to an int
 					int capacity = 0;
 					try{
 						capacity = Integer.parseInt(jsonNode.get("Capacity").asText().replace(".",""));
@@ -75,7 +73,8 @@ public class StadiumHunterApiApplication {
 					double latitude = jsonNode.get("Latitude").asDouble();
 					double longitude = jsonNode.get("Longitude").asDouble();
 					Stadium stadium = new Stadium(id,name,city, country, capacity, latitude, longitude);
-					if(capacity>=5000){
+					//only save stadiums with a capacity greater or equal than 10.000
+					if(capacity>=10000){
 						stadiumService.saveStadium(stadium);
 					}
 					id+=1;
