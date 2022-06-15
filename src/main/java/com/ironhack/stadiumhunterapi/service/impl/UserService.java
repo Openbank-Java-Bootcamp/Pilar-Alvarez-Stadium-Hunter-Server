@@ -3,6 +3,7 @@ package com.ironhack.stadiumhunterapi.service.impl;
 import com.ironhack.stadiumhunterapi.model.Stadium;
 import com.ironhack.stadiumhunterapi.model.User;
 import com.ironhack.stadiumhunterapi.repository.RoleRepository;
+import com.ironhack.stadiumhunterapi.repository.StadiumRepository;
 import com.ironhack.stadiumhunterapi.repository.UserRepository;
 import com.ironhack.stadiumhunterapi.service.interfaces.IUserService;
 import lombok.extern.slf4j.Slf4j;
@@ -38,11 +39,15 @@ public class UserService implements IUserService, UserDetailsService {
 
     @Autowired
     private StadiumService stadiumService;
+    @Autowired
+    private StadiumRepository stadiumRepository;
 
     public User saveUser(User userSignupDTO) {
         log.info("Saving a new user {} inside of the database", userSignupDTO.getName());
         User user = new User(userSignupDTO.getName(), userSignupDTO.getEmail(), userSignupDTO.getPassword());
         user.setPassword(passwordEncoder.encode(user.getPassword()));
+        //i added this to simplificate
+        user.setRemainingStadiums(stadiumRepository.findAll());
         return userRepository.save(user);
     }
 
@@ -66,6 +71,10 @@ public class UserService implements IUserService, UserDetailsService {
         if(!currentUser.getHuntedStadiums().contains(stadiumFromDb)){
             currentUser.getHuntedStadiums().add(stadiumFromDb);
         }
+        //delete the stadium from the remainingStadiusm List
+        if(currentUser.getRemainingStadiums().contains(stadiumFromDb)){
+            currentUser.getRemainingStadiums().remove(stadiumFromDb);
+        }
         userRepository.save(currentUser);
     }
 
@@ -78,6 +87,8 @@ public class UserService implements IUserService, UserDetailsService {
         User currentUser = userRepository.findByEmail(email);
         Stadium stadiumFromDb = stadiumService.findById(stadiumId);
         currentUser.getHuntedStadiums().remove(stadiumFromDb);
+        //added this
+        currentUser.getRemainingStadiums().add(stadiumFromDb);
         userRepository.save(currentUser);
     }
 
@@ -100,6 +111,16 @@ public class UserService implements IUserService, UserDetailsService {
         }
         User currentUser = userRepository.findByEmail(email);
         return currentUser.getHuntedStadiums();
+    }
+
+    public List<Stadium> getRemainingStadiums(){
+        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+        String email = null;
+        if (!(authentication instanceof AnonymousAuthenticationToken)) {
+            email = authentication.getName();
+        }
+        User currentUser = userRepository.findByEmail(email);
+        return currentUser.getRemainingStadiums();
     }
 
     public List<User> getTopUsers(){

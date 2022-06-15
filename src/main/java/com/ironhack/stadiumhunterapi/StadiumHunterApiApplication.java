@@ -49,7 +49,7 @@ public class StadiumHunterApiApplication {
 	@Bean
 	CommandLineRunner run(StadiumService stadiumService, ReviewService reviewService, UserService userService) {
 		return args -> {
-			userService.saveUser(new User("Pilar","pilar@gmail.com", "P@ssw0rd"));
+
 
 			//using ObjectMapper to read a json file with stadiums data and create Stadium objects from it.
 			ObjectMapper mapper = new ObjectMapper();
@@ -80,6 +80,8 @@ public class StadiumHunterApiApplication {
 					id+=1;
 				}
 			}
+
+			userService.saveUser(new User("Pilar","pilar@gmail.com", "P@ssw0rd"));
 		};
 	}
 

@@ -44,6 +44,12 @@ public class UserController {
         return userService.getUserStadiums();
     }
 
+    @GetMapping("/users/remainingStadiums")
+    @ResponseStatus(HttpStatus.OK)
+    public List<Stadium> getRemainingStadiums(){
+        return userService.getRemainingStadiums();
+    }
+
     @GetMapping("/users/count")
     @ResponseStatus(HttpStatus.OK)
     public List<User> getTopUsersCount(){

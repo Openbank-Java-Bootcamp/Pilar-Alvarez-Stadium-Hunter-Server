@@ -36,6 +36,9 @@ public class User {
     @ManyToMany
     private List<Stadium> huntedStadiums;
 
+    @ManyToMany
+    private List<Stadium> remainingStadiums;
+
     //In order to do the signUp:
     public User(String name, String email, String password) {
         this.name = name;
