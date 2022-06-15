@@ -91,26 +91,42 @@ Users can add reviews to the stadiums that have been at.
 
 Objects must be provided in the body of the request as raw and JSON format if it is requires, as examples shown below.
 
-![user-controller](usercontroller.jpg)
-![review-controller](reviewcontroller.jpg)
-![stadium-controller](stadiumcontroller.jpg)
+![user-controller](usercontroller.JPG)
+![review-controller](reviewcontroller.JPG)
+![stadium-controller](stadiumcontroller.JPG)
 ![controller-diagram]
 
+Stadium Object
+
+```bash
+{
+    "capacity": 0,
+    "city": "string",
+    "id": 0,
+    "latitude": 0,
+    "longitude": 0,
+    "name": "string"
+}
+```
+
+Review DTO
+
+```bash
+{
+    "comment": "string",
+    "rating": 0
+    "stadiumId": 0
+}
+```
 
 ## Project Status
-Project is: _in progress_ / _complete_ / _no longer being worked on_. If you are no longer working on it, provide reasons why.
+Project is: _no longer being worked on_.
+This is a final project to a Full Stack Developer Bootcamp, although the idea of ​​the app motivates me, I consider the work finished with the purposes it was supposed to.
 
 
 ## Room for Improvement
-Include areas you believe need improvement / could be improved. Also add TODOs for future development.
+An improvement i would like is adding more data to the stadiums and to the reviews.
 
-Room for improvement:
-- Improvement to be done 1
-- Improvement to be done 2
-
-To do:
-- Feature to be added 1
-- Feature to be added 2
 
 ## Resources
 
