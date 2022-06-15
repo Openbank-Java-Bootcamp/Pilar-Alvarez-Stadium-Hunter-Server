@@ -1,20 +1,23 @@
-# Banking System API
+<!-- PROJECT LOGO -->
+<br />
+<div align="center">
+  
+  <h3 align="center">Stadium Hunter</h3>
+ 
+</div>
 
-This project represents a simple online banking system API that enables account holders to interact with their bank accounts and third-party users to receive and send money to and from accounts of this bank.
 
 ## Table of Contents
 * [General Info](#general-information)
-* [Technologies Used](#technologies-used)
-* [Features](#features)
-* [Screenshots](#screenshots)
+* [User Stories](#user-stories)
 * [Setup](#setup)
-* [Usage](#usage)
+* [Technologies Used](#technologies-used)
 * [Models](#models)
 * [Server Routes](#server-routes-table)
 * [Project Status](#project-status)
 * [Room for Improvement](#room-for-improvement)
-* [Acknowledgements](#acknowledgements)
-* [Contact](#contact)
+* [Resources](#resources)
+
 
 
 ## General Information
@@ -22,6 +25,8 @@ This project represents a simple online banking system API that enables account 
 - What problem does it (intend to) solve?
 - What is the purpose of your project?
 - Why did you undertake it?
+
+## User Stories
 
 ## Setup
 
@@ -31,10 +36,19 @@ $ git clone https://github.com/Openbank-Java-Bootcamp/Pilar-Midterm-Project_Bank
 ```
 
   Before running the API server, you should set the database config with yours or set your database config with my values.
+
+
 ## Technologies used
 
 Java, SpringBoot, MySQL, Postman.
-
+* [Next.js](https://nextjs.org/)
+* [React.js](https://reactjs.org/)
+* [Vue.js](https://vuejs.org/)
+* [Angular](https://angular.io/)
+* [Svelte](https://svelte.dev/)
+* [Laravel](https://laravel.com)
+* [Bootstrap](https://getbootstrap.com)
+* [JQuery](https://jquery.com)
 
 ## Models
 
@@ -89,136 +103,11 @@ Every time an account holder access their balance, it is checked if it is necess
 
 Objects must be provided in the body of the request as raw and JSON format, as examples shown below.
 
-CheckingAccountDTO
 
-```bash
-{
-    "balance": {
-        "amount": "500",
-        "currency": "EUR"
-    } ,
-    "primaryAccountOwnerId": "5" ,
-    "secondaryAccountOwnerId": "",
-    "secretKey": "5688"
-}
-```
-
-SavingAccountDTO
-
-```bash
-{
-    "balance": {
-        "amount": "500",
-        "currency": "EUR"
-    } ,
-    "primaryAccountOwnerId": "1" ,
-    "secondaryAccountOwnerId": "",
-    "secretKey": "5689",
-    "minimumBalance":{
-        "amount":"1500",
-        "currency": "EUR"
-    },
-    "interestRate": "0.6"
-}
-```
-
-CreditAccountDTO
-
-```bash
-{
-    "balance": {
-        "amount": "1000",
-        "currency": "EUR"
-    },
-    "primaryAccountOwnerId": "5" ,
-    "secondaryAccountOwnerId": null,
-    "creditLimit":{
-        "amount": "5000",
-        "currency": "EUR"       
-    },
-    "interestRate": "0.5"
-}
-```
-
-OwnerTransferDTO
-
-```bash
-{
-    "transferAmount": {
-        "amount":"10",
-        "currency" : "EUR"
-    },
-    "ownerTargetName": "James Smith",
-    "targetAccountId": "2",
-    "ownAccountId":"3"
-}
-```
-
-Role
-
-```bash
-{
-    "name": "Luis Perez"
-}
-```
-
-RoleToUserDTO
-
-```bash
-{
-    "username": "Luis Perez",
-    "roleName":"ROLE_ADMIN"
-}
-```
-
-ThirdParty
-
-```bash
-{
-    "name": "Pilar Alvarez",
-    "hashedKey": "2345"
-}
-```
-
-ThirdPartyTransferDTO
-
-```bash
-{
-    "amount": "50",
-    "accountId": "1",
-    "accountSecretKey": "1357"
-}
-```
-
-AccountHolder
-
-```bash
-{
-    "name": "Pilar Alvarez",
-    "username": "pili",
-    "password": "4321",
-    "dateOfBirth" : "1990-01-15",
-    "primaryAddress": {
-        "streetAddress": "Pasaje 12",
-        "postalCode":"08041",
-        "city": "Madrid"
-    },
-    "mailingAddress": null
-}
-```
-
-Admin
-
-```bash
-{
-    "name": "Pilar Alvarez",
-    "username": "pili",
-    "password": "4321"
-}
-```
 
 ## Project Status
 Project is: _in progress_ / _complete_ / _no longer being worked on_. If you are no longer working on it, provide reasons why.
+
 
 ## Room for Improvement
 Include areas you believe need improvement / could be improved. Also add TODOs for future development.
