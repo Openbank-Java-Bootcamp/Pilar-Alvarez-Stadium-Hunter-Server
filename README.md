@@ -2,7 +2,7 @@
 <br />
 <div align="center">
   
-  <h3 align="center">Stadium Hunter</h3>
+   <h1 align="center">Stadium Hunter</h1>
  
 </div>
 
@@ -52,7 +52,7 @@ Java, SpringBoot, MySQL, Postman.
 
 ## Models
 
-![diagram-13559756363580999122](https://user-images.githubusercontent.com/104001417/169570867-16651834-6dc8-42c0-a810-be2a62c9c386.png)
+![model-diagram](https://user-images.githubusercontent.com/104001417/169570867-16651834-6dc8-42c0-a810-be2a62c9c386.png)
 
 There are four types of accounts:
 
