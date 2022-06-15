@@ -21,18 +21,19 @@
 
 
 ## General Information
-- Provide general information about your project here.
-- What problem does it (intend to) solve?
-- What is the purpose of your project?
-- Why did you undertake it?
+This projects serves as a backend or server side functionality to the Stadium Hunter WebApp, accepting HTTP requests.
 
 ## User Stories
+* As a User I want to track all the stadiums I'have visited all around the world.
+* As a User I want to leave review about the stadiums i have visited, so other users can benefit from my opinion.
+* As a User I want to see other users reviews about stadium i want to visit.
+
 
 ## Setup
 
-  Clone the Banking System API. In a terminal, run:
+  Clone the Stadium Hunter API. In a terminal, run:
 ```bash
-$ git clone https://github.com/Openbank-Java-Bootcamp/Pilar-Midterm-Project_Banking-System
+$ git clone https://github.com/Openbank-Java-Bootcamp/Pilar-Alvarez-Stadium-Hunter-Server
 ```
 
   Before running the API server, you should set the database config with yours or set your database config with my values.
@@ -41,18 +42,15 @@ $ git clone https://github.com/Openbank-Java-Bootcamp/Pilar-Midterm-Project_Bank
 ## Technologies used
 
 Java, SpringBoot, MySQL, Postman.
-* [Next.js](https://nextjs.org/)
-* [React.js](https://reactjs.org/)
-* [Vue.js](https://vuejs.org/)
-* [Angular](https://angular.io/)
-* [Svelte](https://svelte.dev/)
-* [Laravel](https://laravel.com)
-* [Bootstrap](https://getbootstrap.com)
-* [JQuery](https://jquery.com)
+* [Java](https://www.java.com/es/)
+* [SpringBoot](https://spring.io/projects/spring-boot)
+* [MySQL](https://www.mysql.com/)
+* [Postman](https://www.postman.com/)
+
 
 ## Models
 
-![model-diagram](https://user-images.githubusercontent.com/104001417/169570867-16651834-6dc8-42c0-a810-be2a62c9c386.png)
+![model-diagram](model-diagram.png)
 
 There are four types of accounts:
 
@@ -103,6 +101,7 @@ Every time an account holder access their balance, it is checked if it is necess
 
 Objects must be provided in the body of the request as raw and JSON format, as examples shown below.
 
+![controller-diagram](controller-diagram.png)
 
 
 ## Project Status
