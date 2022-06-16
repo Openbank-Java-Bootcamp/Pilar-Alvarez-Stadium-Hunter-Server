@@ -1,7 +1,7 @@
 <!-- PROJECT LOGO -->
 <br />
 <div align="center">
-  
+  <img src="logo.png" >
    <h1 align="center">Stadium Hunter</h1>
  
 </div>
@@ -24,13 +24,13 @@
 This project serves as a backend or server side functionality to the Stadium Hunter WebApp, accepting HTTP requests.
 This server implements authentication and authorization over the HTTP requests.
 
-## User Stories
+## :girl: User Stories
 * As a User I want to track all the stadiums I'have visited all around the world.
 * As a User I want to leave review about the stadiums i have visited, so other users can benefit from my opinion.
 * As a User I want to see other users reviews about stadium i want to visit.
 
 
-## Setup
+## :computer: Setup
 
   Clone the Stadium Hunter API. In a terminal, run:
 ```bash
@@ -40,7 +40,7 @@ $ git clone https://github.com/Openbank-Java-Bootcamp/Pilar-Alvarez-Stadium-Hunt
   Before running the API server, you should set the database config with yours or set your database config with my values.
 
 
-## Technologies used
+## :hammer_and_wrench: Technologies used
 
 * [Java](https://www.java.com/es/)
 * [SpringBoot](https://spring.io/projects/spring-boot)
