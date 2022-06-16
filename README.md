@@ -1,9 +1,7 @@
 <!-- PROJECT LOGO -->
 <br />
 <div align="center">
-  <img src="logo.png" >
-   <h1 align="center">Stadium Hunter</h1>
- 
+   <img src="logo.png" alt="Stadium Hunter">
 </div>
 
 
@@ -20,9 +18,10 @@
 
 
 
-## General Information
+## :grey_exclamation: General Information
 This project serves as a backend or server side functionality to the Stadium Hunter WebApp, accepting HTTP requests.
 This server implements authentication and authorization over the HTTP requests.
+Stadium Hunter is an app that allows users to keep track of all the football stadiums they have visited and leave reviews on them.
 
 ## :girl: User Stories
 * As a User I want to track all the stadiums I'have visited all around the world.
@@ -48,7 +47,7 @@ $ git clone https://github.com/Openbank-Java-Bootcamp/Pilar-Alvarez-Stadium-Hunt
 * [Postman](https://www.postman.com/)
 
 
-## Models
+## :world_map: Models
 
 ![model-diagram](model-diagram.png)
 
@@ -67,7 +66,7 @@ Users can add reviews to the stadiums that have been at.
 
 ![controller-diagram](controller-diagram.png)
 
-## Server Routes Table
+## :key: Server Routes Table
  
 | Request Type  | Route                        | Description                                              | Authorization       | Requested Data            |
 | ------------- | -----------------------------| ---------------------------------------------------------|---------------------|---------------------------|
@@ -119,16 +118,16 @@ Review DTO
 }
 ```
 
-## Project Status
+## :hourglass: Project Status
 Project is: _no longer being worked on_.
 This is a final project to a Full Stack Developer Bootcamp, although the idea of ​​the app motivates me, I consider the work finished with the purposes it was supposed to.
 
 
-## Room for Improvement
+## :rocket: Room for Improvement
 An improvement i would like is adding more data to the stadiums and to the reviews.
 
 
-## Resources
+## :books: Resources
 
 Instructors of Ironhack: Raymond & Shaun.
 
