@@ -4,6 +4,7 @@ import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.ironhack.stadiumhunterapi.model.Stadium;
 import com.ironhack.stadiumhunterapi.model.User;
+import com.ironhack.stadiumhunterapi.repository.UserRepository;
 import com.ironhack.stadiumhunterapi.service.impl.ReviewService;
 import com.ironhack.stadiumhunterapi.service.impl.StadiumService;
 import com.ironhack.stadiumhunterapi.service.impl.UserService;
@@ -47,11 +48,11 @@ public class StadiumHunterApiApplication {
 	}
 
 	@Bean
-	CommandLineRunner run(StadiumService stadiumService, ReviewService reviewService, UserService userService) {
+	CommandLineRunner run(StadiumService stadiumService, ReviewService reviewService, UserService userService, UserRepository userRepository) {
 		return args -> {
 
 
-			//using ObjectMapper to read a json file with stadiums data and create Stadium objects from it.
+			//using ObjectMapper to read a json file (stadiums.json) with stadiums data and create Stadium objects from it.
 			ObjectMapper mapper = new ObjectMapper();
 			URL resource = Main.class.getClassLoader().getResource("stadiums.json");
 			byte[] bytes = Files.readAllBytes(Paths.get(resource.toURI()));
@@ -82,6 +83,15 @@ public class StadiumHunterApiApplication {
 			}
 
 			userService.saveUser(new User("Pilar","pilar@gmail.com", "P@ssw0rd"));
+
+			userService.saveUser(new User("Carlota","carlota@gmail.com","P@ssw0rd"));
+			userService.saveUser(new User("Remigio","remi@gmail.com","P@ssw0rd"));
+			userService.saveUser(new User("Magali","maga@gmail.com","P@ssw0rd"));
+			userService.saveUser(new User("Paula","pau@gmail.com","P@ssw0rd"));
+			userService.saveUser(new User("Federico","fede@gmail.com","P@ssw0rd"));
+
+
+
 		};
 	}
 

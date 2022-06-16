@@ -94,7 +94,7 @@ Objects must be provided in the body of the request as raw and JSON format if it
 ![user-controller](usercontroller.JPG)
 ![review-controller](reviewcontroller.JPG)
 ![stadium-controller](stadiumcontroller.JPG)
-![controller-diagram]
+
 
 Stadium Object
 
